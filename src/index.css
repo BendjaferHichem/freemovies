@@ -1,0 +1,129 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   THEME VARIABLES (Dark Mode by Default)
+   ========================================================================== */
+:root,
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-input: #0e0e0e;
+  --border: #1e1e1e;
+  --border-hover: rgba(0, 153, 255, 0.4);
+  
+  --text: #e5e5e5;
+  --text-muted: #888888;
+  --text-dim: #484848;
+  
+  --gold: #0099ff;
+  --gold-hover: #33aaff;
+  --font: 'EB Garamond', Georgia, serif;
+
+  --scrollbar-thumb: #2a2a2a;
+  --scrollbar-thumb-hover: #3a3a3a;
+  --selection-bg: rgba(0, 153, 255, 0.25);
+  --selection-color: #ffffff;
+}
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES
+   ========================================================================== */
+[data-theme="light"] {
+  --bg: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-input: #f1f3f5;
+  --border: #e9ecef;
+  --border-hover: rgba(0, 153, 255, 0.4);
+
+  --text: #1a1a1a;          /* Main text flips to dark charcoal */
+  --text-muted: #555555;    /* Muted text flips to medium gray */
+  --text-dim: #888888;      /* Dim text flips to light gray */
+
+  --gold: #0077cc;
+  --gold-hover: #005599;
+
+  --scrollbar-thumb: #cccccc;
+  --scrollbar-thumb-hover: #bbbbbb;
+  --selection-bg: rgba(0, 122, 204, 0.2);
+  --selection-color: #000000;
+}
+
+/* ==========================================================================
+   GLOBAL STYLES
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button, input, a {
+  font-family: var(--font);
+  color: var(--text); /* Ensures form inputs and buttons inherit theme color */
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Text Selection */
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-color);
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES (Absolute Black Text & High Contrast)
+   ========================================================================== */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --bg-input: #f0f0f0;
+  --border: #000000;          /* Solid black borders */
+
+  --text: #000000;            /* ABSOLUTE BLACK for all main text */
+  --text-muted: #000000;      /* ABSOLUTE BLACK for subtitles / muted text */
+  --text-dim: #000000;        /* ABSOLUTE BLACK for dots / icons */
+
+  --gold: #0066cc;
+  --gold-hover: #004499;
+
+  --scrollbar-thumb: #000000;
+  --scrollbar-thumb-hover: #333333;
+  --selection-bg: #000000;
+  --selection-color: #ffffff;
+}
