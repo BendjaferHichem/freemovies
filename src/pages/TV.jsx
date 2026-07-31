@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { api, tvEmbedUrl, formatRating, getYear } from '../lib/api.js'
+import { api, formatRating, getYear } from '../lib/api.js'
 import MediaGrid from '../components/MediaGrid.jsx'
 import Player from '../components/Player.jsx'
 import SeasonPicker from '../components/SeasonPicker.jsx'
@@ -68,7 +68,10 @@ export default function TV() {
   function handlePlay(season, episode) {
     if (!selected) return
     const p = {
-      src: tvEmbedUrl(selected.id, season, episode),
+      id: selected.id,
+      type: 'tv',
+      season: season,
+      episode: episode,
       title: selected.name,
       year: getYear(selected.first_air_date),
       rating: formatRating(selected.vote_average),
@@ -117,4 +120,4 @@ export default function TV() {
       />
     </div>
   )
-}
+ }
