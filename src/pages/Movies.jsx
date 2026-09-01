@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { api, movieEmbedUrl, formatRating, getYear } from '../lib/api.js'
+import { api, formatRating, getYear } from '../lib/api.js'
 import MediaGrid from '../components/MediaGrid.jsx'
 import Player from '../components/Player.jsx'
 import styles from './Movies.module.css'
@@ -49,7 +49,8 @@ export default function Movies() {
 
   function select(item) {
     const p = {
-      src: movieEmbedUrl(item.id),
+      id: item.id,
+      type: 'movie',
       title: item.title,
       year: getYear(item.release_date),
       rating: formatRating(item.vote_average),
@@ -96,4 +97,4 @@ export default function Movies() {
       />
     </div>
   )
-}
+ }

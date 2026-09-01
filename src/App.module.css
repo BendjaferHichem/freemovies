@@ -10,9 +10,9 @@
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 clamp(1rem, 4vw, 2.5rem);
-  height: 65px; /* Slightly taller to accommodate larger text */
+  height: 65px;
   background: var(--bg-card);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -24,12 +24,12 @@
   background: none;
   border: none;
   padding: 0;
-  font-size: clamp(1.4rem, 3vw, 1.6rem); /* Increased size */
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   letter-spacing: 0.12em;
-  color: var(--text); /* Pure black (#000) in light mode, pure white (#fff) in dark mode */
+  color: var(--text);
   font-weight: 700;
   font-style: normal;
-  font-family: 'Futura', 'Trebuchet MS', sans-serif;;
+  font-family: 'Futura', 'Trebuchet MS', sans-serif;
   cursor: pointer;
   transition: opacity 0.2s, color 0.3s ease;
 }
@@ -54,18 +54,23 @@
   overflow: hidden;
   background: var(--bg-input);
   transition: border-color 0.3s ease, background-color 0.3s ease;
+  
+  /* Centers navigation in available space */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tab {
   padding: 8px 22px;
-  font-size: 15px; /* Increased from 13px */
+  font-size: 15px;
   font-weight: 600;
   background: transparent;
-  color: var(--text); /* Pure black text in light mode */
+  color: var(--text);
   border: none;
   letter-spacing: 0.05em;
   font-family: var(--font);
   transition: color 0.2s, background 0.2s;
+  cursor: pointer;
 }
 
 .tab:hover:not(.active) {
@@ -75,8 +80,30 @@
 
 .tab.active {
   background: var(--gold);
-  color: #ffffff; /* White text on active gold button */
+  color: #ffffff;
   font-weight: 700;
+}
+
+.themeToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--bg-input);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  
+  /* Desktop margin offset to pull button inward from far right */
+  margin-right: 2rem; 
+}
+
+.toggleLabel {
+  display: inline;
 }
 
 .main {
@@ -85,7 +112,7 @@
   width: 100%;
   margin: 0 auto;
   padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem;
-  font-size: 18px; /* Slightly larger base size for main content container */
+  font-size: 18px;
 }
 
 .footer {
@@ -96,8 +123,8 @@
 }
 
 .footerText {
-  font-size: 14px; /* Increased from 12px */
-  color: var(--text); /* Pure black in light mode */
+  font-size: 14px;
+  color: var(--text);
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -114,23 +141,31 @@
   text-decoration: underline;
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVE BREAKPOINT
+   ========================================================================== */
+@media (max-width: 640px) {
+  .header {
+    padding: 0 0.75rem;
+  }
 
+  .logo {
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
 
+  .tab {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
 
+  .themeToggleBtn {
+    margin-right: 0; /* Reset margin on small screens to fit cleanly */
+    padding: 0.4rem;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-.headerControls {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem; /* Creates clean breathing room between the tabs and the toggle */
+  /* Hide the text "Light/Dark" on phones, show icon only */
+  .toggleLabel {
+    display: none;
+  }
 }

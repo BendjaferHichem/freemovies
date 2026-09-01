@@ -54,47 +54,32 @@ export default function App() {
           <span className={styles.logoAccent}>BENJ</span><span className={styles.logoDot}>·</span>MOVIE
         </button>
 
-        {/* Grouped controls to keep the toggle separate from the tab bar */}
-        <div className={styles.headerControls}>
-          <nav className={styles.tabs}>
-            <button
-              className={`${styles.tab} ${tab === 'movies' ? styles.active : ''}`}
-              onClick={() => goTab('movies')}
-            >
-              Movies
-            </button>
-            <button
-              className={`${styles.tab} ${tab === 'tv' ? styles.active : ''}`}
-              onClick={() => goTab('tv')}
-            >
-              TV Series
-            </button>
-          </nav>
-
-          {/* Theme Toggle Button */}
+        {/* Navigation Tabs */}
+        <nav className={styles.tabs}>
           <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label="Toggle dark/light mode"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              padding: '0.4rem 0.8rem',
-              fontSize: '0.85rem',
-              fontWeight: '500',
-              borderRadius: '6px',
-              border: '1px solid var(--border)',
-              backgroundColor: 'var(--bg-input)',
-              color: 'var(--text)',
-              cursor: 'pointer',
-              transition: 'background-color 0.2s ease, transform 0.1s ease',
-            }}
+            className={`${styles.tab} ${tab === 'movies' ? styles.active : ''}`}
+            onClick={() => goTab('movies')}
           >
-            <span>{isDark ? '☀️' : '🌙'}</span>
-            <span>{isDark ? 'Light' : 'Dark'}</span>
+            Movies
           </button>
-        </div>
+          <button
+            className={`${styles.tab} ${tab === 'tv' ? styles.active : ''}`}
+            onClick={() => goTab('tv')}
+          >
+            TV Series
+          </button>
+        </nav>
+
+        {/* Theme Toggle Button */}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          aria-label="Toggle dark/light mode"
+          className={styles.themeToggleBtn}
+        >
+          <span>{isDark ? '☀️' : '🌙'}</span>
+          <span className={styles.toggleLabel}>{isDark ? 'Light' : 'Dark'}</span>
+        </button>
       </header>
 
       <main className={styles.main}>

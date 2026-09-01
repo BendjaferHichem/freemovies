@@ -1,6 +1,4 @@
 export const TMDB_KEY = import.meta.env.VITE_TMDB_KEY;
-export const EMBED_API_KEY = import.meta.env.VITE_EMBED_API_KEY;
-export const EMBED_BASE = import.meta.env.VITE_EMBED_BASE;
 export const IMG_BASE = import.meta.env.VITE_IMG_BASE;
 export const IMG_BASE_LG = import.meta.env.VITE_IMG_BASE_LG;
 
@@ -21,14 +19,6 @@ export const api = {
   seasonDetails: (id, season) => tmdbFetch(`/tv/${id}/season/${season}`),
 }
 
-export function movieEmbedUrl(tmdbId) {
-  return `${EMBED_BASE}/embed/movie/${tmdbId}?apikey=${EMBED_API_KEY}`
-}
-
-export function tvEmbedUrl(tmdbId, season, episode) {
-  return `${EMBED_BASE}/embed/tv/${tmdbId}/${season}/${episode}?apikey=${EMBED_API_KEY}`
-}
-
 export function posterUrl(path, large = false) {
   if (!path) return null
   return (large ? IMG_BASE_LG : IMG_BASE) + path
@@ -41,4 +31,4 @@ export function formatRating(rating) {
 
 export function getYear(dateStr) {
   return (dateStr || '').slice(0, 4)
-}
+ }
